@@ -22,6 +22,14 @@ import {
   FaStar
 } from 'react-icons/fa';
 import logo from '../assets/logo.png';
+import {
+  fetchBookings as apiFetchBookings,
+  updateBookingStatus as apiUpdateBookingStatus,
+  deleteBooking as apiDeleteBooking,
+  fetchReviews as apiFetchReviews,
+  updateReviewStatus as apiUpdateReviewStatus,
+  deleteReview as apiDeleteReview
+} from '../services/api';
 
 const roomOptions = {
   deluxe: { label: 'Deluxe Room', price: 120 },
@@ -112,34 +120,16 @@ const AdminPage = () => {
   const [reviewSearchTerm, setReviewSearchTerm] = useState('');
   const [reviewStatusFilter, setReviewStatusFilter] = useState('all');
 
-  // Load bookings and reviews from localStorage
-  const loadData = () => {
-    const existingBookings = localStorage.getItem('hotel_bookings');
-    if (existingBookings) {
-      setBookings(JSON.parse(existingBookings));
-    } else {
-      localStorage.setItem('hotel_bookings', JSON.stringify(initialMockBookings));
-      setBookings(initialMockBookings);
-    }
-
-    const existingReviews = localStorage.getItem('hotel_reviews');
-    if (existingReviews) {
-      setReviews(JSON.parse(existingReviews));
-    } else {
-      const demoReviews = [
-        {
-          id: 'REV-demo1',
-          name: 'Praveen Sethu Vel K',
-          role: 'Corporate Guest',
-          rating: 5,
-          text: 'Superb service and absolute premium quality rooms. Will visit again!',
-          image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=150&auto=format&fit=crop',
-          status: 'pending',
-          submittedAt: new Date(Date.now() - 3600000).toISOString()
-        }
-      ];
-      localStorage.setItem('hotel_reviews', JSON.stringify(demoReviews));
-      setReviews(demoReviews);
+  // Load bookings and reviews from localStorage / API
+  const loadData = async () => {
+    try {
+      const bData = await apiFetchBookings();
+      setBookings(bData);
+      
+      const rData = await apiFetchReviews();
+      setReviews(rData);
+    } catch (err) {
+      console.error('Failed to load data from API:', err);
     }
   };
 
@@ -178,56 +168,50 @@ const AdminPage = () => {
   };
 
   // Update Booking Status
-  const updateStatus = (id, newStatus) => {
-    const updated = bookings.map(b => {
-      if (b.id === id) {
-        return { ...b, status: newStatus };
+  const updateStatus = async (id, newStatus) => {
+    const success = await apiUpdateBookingStatus(id, newStatus);
+    if (success) {
+      const updated = bookings.map(b => b.id === id ? { ...b, status: newStatus } : b);
+      setBookings(updated);
+      
+      // Update active modal view if open
+      if (selectedBooking && selectedBooking.id === id) {
+        setSelectedBooking(prev => ({ ...prev, status: newStatus }));
       }
-      return b;
-    });
-    setBookings(updated);
-    localStorage.setItem('hotel_bookings', JSON.stringify(updated));
-    
-    // Update active modal view if open
-    if (selectedBooking && selectedBooking.id === id) {
-      setSelectedBooking(prev => ({ ...prev, status: newStatus }));
     }
-    window.dispatchEvent(new Event('storage'));
   };
 
   // Delete Booking
-  const deleteBooking = (id) => {
+  const deleteBooking = async (id) => {
     if (window.confirm('Are you sure you want to permanently delete this enquiry?')) {
-      const filtered = bookings.filter(b => b.id !== id);
-      setBookings(filtered);
-      localStorage.setItem('hotel_bookings', JSON.stringify(filtered));
-      if (selectedBooking && selectedBooking.id === id) {
-        setSelectedBooking(null);
+      const success = await apiDeleteBooking(id);
+      if (success) {
+        const filtered = bookings.filter(b => b.id !== id);
+        setBookings(filtered);
+        if (selectedBooking && selectedBooking.id === id) {
+          setSelectedBooking(null);
+        }
       }
-      window.dispatchEvent(new Event('storage'));
     }
   };
 
   // Update Review Status (Approve / Reject)
-  const updateReviewStatus = (id, newStatus) => {
-    const updated = reviews.map(r => {
-      if (r.id === id) {
-        return { ...r, status: newStatus };
-      }
-      return r;
-    });
-    setReviews(updated);
-    localStorage.setItem('hotel_reviews', JSON.stringify(updated));
-    window.dispatchEvent(new Event('storage'));
+  const updateReviewStatus = async (id, newStatus) => {
+    const success = await apiUpdateReviewStatus(id, newStatus);
+    if (success) {
+      const updated = reviews.map(r => r.id === id ? { ...r, status: newStatus } : r);
+      setReviews(updated);
+    }
   };
 
   // Delete Review
-  const deleteReview = (id) => {
+  const deleteReview = async (id) => {
     if (window.confirm('Are you sure you want to permanently delete this review?')) {
-      const filtered = reviews.filter(r => r.id !== id);
-      setReviews(filtered);
-      localStorage.setItem('hotel_reviews', JSON.stringify(filtered));
-      window.dispatchEvent(new Event('storage'));
+      const success = await apiDeleteReview(id);
+      if (success) {
+        const filtered = reviews.filter(r => r.id !== id);
+        setReviews(filtered);
+      }
     }
   };
 

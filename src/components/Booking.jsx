@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaCrown } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 import { FiCheckCircle, FiCalendar, FiUser, FiMail, FiPhone, FiChevronDown, FiMessageSquare } from 'react-icons/fi';
+import { addBooking } from '../services/api';
 
 const roomOptions = [
   { value: 'deluxe', label: 'Deluxe Room' },
@@ -27,6 +28,7 @@ const Booking = ({ hideTitle = false }) => {
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [bookingRef, setBookingRef] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,9 +76,10 @@ const Booking = ({ hideTitle = false }) => {
     return Object.keys(tempErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
+      setIsSubmitting(true);
       // Generate unique booking reference number
       const randomRef = 'SRI-' + Math.floor(100000 + Math.random() * 900000);
       setBookingRef(randomRef);
@@ -96,18 +99,15 @@ const Booking = ({ hideTitle = false }) => {
         bookingRef: randomRef
       };
 
-      // Save to localStorage
       try {
-        const existingBookingsJson = localStorage.getItem('hotel_bookings');
-        const existingBookings = existingBookingsJson ? JSON.parse(existingBookingsJson) : [];
-        existingBookings.unshift(newBooking); // add new booking to top of list
-        localStorage.setItem('hotel_bookings', JSON.stringify(existingBookings));
+        await addBooking(newBooking);
+        console.log('Booking Enquiry Submitted successfully:', newBooking);
+        setIsSubmitted(true);
       } catch (err) {
-        console.error('Failed to save booking to localStorage:', err);
+        console.error('Failed to submit booking:', err);
+      } finally {
+        setIsSubmitting(false);
       }
-
-      console.log('Booking Enquiry Saved to LocalStorage:', newBooking);
-      setIsSubmitted(true);
     }
   };
 
@@ -485,9 +485,10 @@ const Booking = ({ hideTitle = false }) => {
                 <div className="pt-4">
                   <button
                     type="submit"
-                    className="w-full py-4 bg-gold-400 hover:bg-gold-500 text-luxury-black font-semibold font-sans text-xs tracking-widest uppercase rounded-sm transition-all duration-300 shadow-lg hover:shadow-[0_0_15px_rgba(197,168,128,0.4)] cursor-pointer"
+                    disabled={isSubmitting}
+                    className="w-full py-4 bg-gold-400 hover:bg-gold-500 disabled:bg-gold-400/50 disabled:cursor-not-allowed text-luxury-black font-semibold font-sans text-xs tracking-widest uppercase rounded-sm transition-all duration-300 shadow-lg hover:shadow-[0_0_15px_rgba(197,168,128,0.4)] cursor-pointer"
                   >
-                    Submit Booking Request
+                    {isSubmitting ? 'Submitting Request...' : 'Submit Booking Request'}
                   </button>
                 </div>
               </motion.form>

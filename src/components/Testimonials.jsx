@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaStar, FaQuoteLeft, FaTimes } from 'react-icons/fa';
 import { IoArrowBackOutline, IoArrowForwardOutline } from 'react-icons/io5';
+import { fetchReviews, addReview } from '../services/api';
 
 const testimonialsData = [
   {
@@ -55,10 +56,9 @@ const Testimonials = () => {
   const [hoverRating, setHoverRating] = useState(0);
 
   // Load reviews on mount
-  const loadApprovedReviews = () => {
+  const loadApprovedReviews = async () => {
     try {
-      const storedReviewsJson = localStorage.getItem('hotel_reviews');
-      const storedReviews = storedReviewsJson ? JSON.parse(storedReviewsJson) : [];
+      const storedReviews = await fetchReviews();
       const approved = storedReviews.filter(r => r.status === 'approved');
       
       // Combine mock data with approved reviews
@@ -101,12 +101,11 @@ const Testimonials = () => {
   }, [handleNext, activeTestimonials.length]);
 
   // Handle Review form submission
-  const handleSubmitReview = (e) => {
+  const handleSubmitReview = async (e) => {
     e.preventDefault();
     if (!formData.name.trim() || !formData.text.trim()) return;
 
     const newReview = {
-      id: 'REV-' + Date.now() + Math.floor(Math.random() * 1000),
       name: formData.name,
       role: formData.role.trim() || 'Guest',
       rating: formData.rating,
@@ -117,20 +116,13 @@ const Testimonials = () => {
     };
 
     try {
-      const storedReviewsJson = localStorage.getItem('hotel_reviews');
-      const storedReviews = storedReviewsJson ? JSON.parse(storedReviewsJson) : [];
-      storedReviews.unshift(newReview);
-      localStorage.setItem('hotel_reviews', JSON.stringify(storedReviews));
-      
-      // Dispatch a custom event to notify other components in the same window
-      window.dispatchEvent(new Event('storage'));
+      await addReview(newReview);
+      setSubmitSuccess(true);
+      setFormData({ name: '', role: '', rating: 5, text: '' });
     } catch (err) {
       console.error('Failed to save review:', err);
     }
 
-    setSubmitSuccess(true);
-    setFormData({ name: '', role: '', rating: 5, text: '' });
-    
     setTimeout(() => {
       setIsModalOpen(false);
       setSubmitSuccess(false);
