@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Montserrat", "Inter", sans-serif;
+  
+  --color-gold-50: #FAF7F2;
+  --color-gold-100: #F4ECE0;
+  --color-gold-200: #E6D5BD;
+  --color-gold-300: #D4B692;
+  --color-gold-400: #C5A880;
+  --color-gold-500: #B79469;
+  --color-gold-600: #9F7E53;
+  --color-gold-700: #826640;
+  --color-gold-800: #654F31;
+  --color-gold-900: #4B3923;
+  
+  --color-luxury-black: #0B0B0C;
+  --color-luxury-charcoal: #141416;
+  --color-luxury-gray: #1E1F22;
+  --color-luxury-light-gray: #2B2C30;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-luxury-black);
+  color: #F1F5F9;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-luxury-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold-400);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-500);
+}
+
+/* Glassmorphism utility */
+.glass-effect {
+  background: rgba(20, 20, 22, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(197, 168, 128, 0.15);
+}
+
+.glass-card {
+  background: rgba(30, 31, 34, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(197, 168, 128, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(197, 168, 128, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(197, 168, 128, 0.15);
+  transform: translateY(-4px);
+}
+
+/* Gold Gradient utilities */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #F4ECE0 0%, #C5A880 50%, #826640 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #E6D5BD 0%, #C5A880 50%, #9F7E53 100%);
+}
+
+.gold-gradient-border {
+  border-image: linear-gradient(135deg, #E6D5BD, #C5A880, #9F7E53) 1;
+}
+
+/* Smooth zoom transition */
+.image-zoom-container {
+  overflow: hidden;
+}
+
+.image-zoom-container img {
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.image-zoom-container:hover img {
+  transform: scale(1.08);
+}
+
+/* ============================================================
+   PRINT MEDIA STYLES — Hotel Receipt / Booking Ticket
+   ============================================================ */
+@media print {
+  /* 1. Page setup — A4 portrait, white background */
+  @page {
+    size: A4 portrait;
+    margin: 15mm 12mm;
+  }
+
+  /* 2. Hide entire page body first */
+  html, body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body > * {
+    display: none !important;
+  }
+
+  /* 3. Only show the printable ticket */
+  .printable-ticket {
+    display: block !important;
+    visibility: visible !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    overflow: visible !important;
+    z-index: 99999 !important;
+  }
+
+  /* 4. Make all children inside ticket visible */
+  .printable-ticket,
+  .printable-ticket * {
+    visibility: visible !important;
+    color: #111111 !important;
+    background-color: transparent !important;
+    border-color: #d4b692 !important;
+    -webkit-text-fill-color: #111111 !important;
+  }
+
+  /* 5. Ticket header area */
+  .printable-ticket .ticket-header {
+    background-color: #faf7f2 !important;
+    border-bottom: 2px solid #c5a880 !important;
+    padding: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+  }
+
+  /* 6. Gold-colored elements keep their gold color in print */
+  .printable-ticket .print-gold,
+  .printable-ticket [class*="text-gold"] {
+    color: #a08259 !important;
+    -webkit-text-fill-color: #a08259 !important;
+  }
+
+  /* 7. Status badge colors */
+  .printable-ticket .print-status-confirmed { color: #166534 !important; -webkit-text-fill-color: #166534 !important; }
+  .printable-ticket .print-status-pending   { color: #92400e !important; -webkit-text-fill-color: #92400e !important; }
+  .printable-ticket .print-status-cancelled { color: #991b1b !important; -webkit-text-fill-color: #991b1b !important; }
+
+  /* 8. Dividers and borders */
+  .printable-ticket [class*="border"] {
+    border-color: #e2c9a5 !important;
+  }
+
+  /* 9. Gray labels */
+  .printable-ticket [class*="text-gray"] {
+    color: #555555 !important;
+    -webkit-text-fill-color: #555555 !important;
+  }
+
+  /* 10. Logo image */
+  .printable-ticket img {
+    display: block !important;
+    visibility: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    max-width: 60px !important;
+    max-height: 60px !important;
+    object-fit: contain !important;
+  }
+
+  /* 11. List items */
+  .printable-ticket ul, .printable-ticket li {
+    color: #333333 !important;
+    -webkit-text-fill-color: #333333 !important;
+  }
+
+  /* 12. Sections with dark backgrounds become light */
+  .printable-ticket [class*="bg-luxury"],
+  .printable-ticket [class*="bg-gold"],
+  .printable-ticket [class*="glass"] {
+    background-color: #f9f5f0 !important;
+  }
+
+  /* 13. Completely hide non-print elements */
+  .print-hide,
+  header,
+  nav,
+  footer,
+  button,
+  [class*="print-hide"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* 14. Remove framer-motion overlay artifacts */
+  [style*="opacity: 0"],
+  [style*="opacity:0"] {
+    display: none !important;
+  }
+}
