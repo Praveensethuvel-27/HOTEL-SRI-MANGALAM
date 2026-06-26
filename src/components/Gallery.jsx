@@ -3,65 +3,114 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { IoCloseOutline, IoArrowBackOutline, IoArrowForwardOutline } from 'react-icons/io5';
 import { FiZoomIn } from 'react-icons/fi';
 
-const galleryCategories = ['All', 'Exterior', 'Lobby', 'Rooms', 'Dining', 'Facilities'];
+const galleryCategories = ['All', 'Exterior', 'Lobby', 'Rooms', 'Venue'];
 
 const galleryImages = [
   {
     id: 1,
     category: 'Exterior',
-    title: 'Grand Hotel Exterior',
-    url: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop',
-    description: 'Our beautifully lit grand estate exterior reflecting architectural brilliance.'
+    title: 'Mangalam Residency',
+    url: '/images/pic1.jpg',
+    description: 'The welcoming entrance of Mangalam Residency, Kariapatti.'
   },
   {
     id: 2,
-    category: 'Lobby',
-    title: 'Luxury Hotel Lobby',
-    url: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=800&auto=format&fit=crop',
-    description: 'Double-height grand entrance lobby accented with warm chandeliers.'
+    category: 'Rooms',
+    title: 'Standard Room',
+    url: '/images/pic2.jpg',
+    description: 'Clean and comfortable Standard Room with twin beds and premium linens.'
   },
   {
     id: 3,
-    category: 'Lobby',
-    title: 'Reception Area',
-    url: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop',
-    description: 'Our bespoke reception counter staffed with dedicated concierges.'
+    category: 'Rooms',
+    title: 'Standard Room View',
+    url: '/images/pic3.jpg',
+    description: 'Standard room with cozy double bed and elegant furnishings.'
   },
   {
     id: 4,
     category: 'Rooms',
-    title: 'Deluxe Bedroom Suite',
-    url: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=800&auto=format&fit=crop',
-    description: 'Spacious bedding arrangements lined with pure premium silk linens.'
+    title: 'Deluxe Room',
+    url: '/images/pic4.jpg',
+    description: 'Spacious Deluxe Room with king-size bed and premium amenities.'
   },
   {
     id: 5,
-    category: 'Dining',
-    title: 'Mangalam Restaurant',
-    url: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=800&auto=format&fit=crop',
-    description: 'Fine dining room serving multi-cuisine specialties curated by Michelin chefs.'
+    category: 'Rooms',
+    title: 'Deluxe Room Interior',
+    url: '/images/pic5.jpg',
+    description: 'Elegant Deluxe Room with premium decor and comfortable furnishings.'
   },
   {
     id: 6,
-    category: 'Facilities',
-    title: 'Infinity Sky Pool',
-    url: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=800&auto=format&fit=crop',
-    description: 'Panoramic outdoor swimming pool looking over the city skyline.'
+    category: 'Rooms',
+    title: 'Standard Twin Beds',
+    url: '/images/pic6.jpg',
+    description: 'Standard Room featuring twin beds with teal accent wall and wardrobe.'
   },
   {
     id: 7,
-    category: 'Facilities',
-    title: 'Premium Wellness Spa',
-    url: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop',
-    description: 'Calm relaxation rooms providing bespoke body treatments and massages.'
+    category: 'Rooms',
+    title: 'Deluxe King Bed',
+    url: '/images/pic7.jpg',
+    description: 'Deluxe Room with king bed, AC, and full-length mirror.'
   },
   {
     id: 8,
     category: 'Rooms',
-    title: 'Premium Suite Lounge',
-    url: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=800&auto=format&fit=crop',
-    description: 'Private penthouse seating area configured with state of the art sound bars.'
-  }
+    title: 'Room Interior',
+    url: '/images/pic8.jpg',
+    description: 'Premium room interior with quality furnishings.'
+  },
+  {
+    id: 9,
+    category: 'Rooms',
+    title: 'Room Decor',
+    url: '/images/pic9.jpg',
+    description: 'Well-designed room with artisan decor and premium bedding.'
+  },
+  {
+    id: 10,
+    category: 'Rooms',
+    title: 'Cozy Room',
+    url: '/images/pic10.jpg',
+    description: 'Comfortable room with all modern amenities.'
+  },
+  {
+    id: 11,
+    category: 'Rooms',
+    title: 'Standard Room AC',
+    url: '/images/pic11.jpg',
+    description: 'Air-conditioned Standard Room with quality beds.'
+  },
+  {
+    id: 12,
+    category: 'Rooms',
+    title: 'Deluxe with Smart TV',
+    url: '/images/pic12.jpg',
+    description: 'Deluxe Room featuring Smart TV, king-size bed, and premium amenities.'
+  },
+  {
+    id: 13,
+    category: 'Rooms',
+    title: 'Standard Room',
+    url: '/images/pic13.jpg',
+    description: 'Neat Standard Room with checked bed linen and teak furniture.'
+  },
+  {
+    id: 14,
+    category: 'Rooms',
+    title: 'Suite Room',
+    url: '/images/pic14.jpg',
+    description: 'Luxurious Suite Room with floral decoration — perfect for honeymooners.'
+  },
+  {
+    id: 15,
+    category: 'Lobby',
+    title: 'Hotel Corridor',
+    url: '/images/pic15.jpg',
+    description: 'Elegantly designed corridor with teak wood paneling and warm lighting.'
+  },
 ];
 
 const Gallery = ({ hideTitle = false }) => {
@@ -73,7 +122,6 @@ const Gallery = ({ hideTitle = false }) => {
   );
 
   const openLightbox = (imageIndex) => {
-    // Find index in filteredImages array to prevent navigating outside the current filter
     setLightboxIndex(imageIndex);
   };
 

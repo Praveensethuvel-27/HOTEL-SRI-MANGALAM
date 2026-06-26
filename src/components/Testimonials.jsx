@@ -11,7 +11,7 @@ const testimonialsData = [
     role: 'Managing Director, Kumar Tech',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop',
     rating: 5,
-    text: 'Hotel Sri Mangalam sets a brand new standard for hospitality. The executive suites are incredibly comfortable, and the service is swift. The multi-cuisine dining options at their restaurant were the absolute highlight of my business trip.'
+    text: 'Mangalam Residency sets a brand new standard for hospitality. The suites are incredibly comfortable, and the service is swift. The multi-cuisine dining options at their restaurant were the absolute highlight of my business trip.'
   },
   {
     id: 2,

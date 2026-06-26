@@ -32,69 +32,69 @@ import {
 } from '../services/api';
 
 const roomOptions = {
-  deluxe: { label: 'Deluxe Room', price: 120 },
-  executive: { label: 'Executive Room', price: 180 },
-  family: { label: 'Family Room', price: 240 },
-  'premium-suite': { label: 'Premium Suite', price: 350 }
+  standard: { label: 'Standard Room', price: 1800 },
+  deluxe: { label: 'Deluxe Room', price: 2500 },
+  suite: { label: 'Suite Room', price: 3800 },
+  venue: { label: 'Mangalam Venue', price: 25000 }
 };
 
 // Initial Mock Bookings to pre-populate database if empty
 const initialMockBookings = [
   {
-    id: 'SRI-582910',
+    id: 'MR-582910',
     fullName: 'Rajesh Kumar',
     mobileNumber: '+91 98765 43210',
     emailAddress: 'rajesh.kumar@example.com',
     checkInDate: '2026-06-18',
     checkOutDate: '2026-06-21',
     guestsCount: '2',
-    roomType: 'premium-suite',
+    roomType: 'suite',
     specialRequest: 'Need airport shuttle pick up at Madurai airport.',
     status: 'pending',
     submittedAt: new Date(Date.now() - 2 * 3600000).toISOString(),
-    bookingRef: 'SRI-582910'
+    bookingRef: 'MR-582910'
   },
   {
-    id: 'SRI-849201',
+    id: 'MR-849201',
     fullName: 'Meenakshi Sundaram',
     mobileNumber: '+91 94432 12345',
     emailAddress: 'meena.s@example.com',
     checkInDate: '2026-06-20',
     checkOutDate: '2026-06-22',
     guestsCount: '3',
-    roomType: 'executive',
+    roomType: 'deluxe',
     specialRequest: 'High floor room preferred, facing the garden view.',
     status: 'confirmed',
     submittedAt: new Date(Date.now() - 10 * 3600000).toISOString(),
-    bookingRef: 'SRI-849201'
+    bookingRef: 'MR-849201'
   },
   {
-    id: 'SRI-302948',
+    id: 'MR-302948',
     fullName: 'David Miller',
     mobileNumber: '+91 99944 88812',
     emailAddress: 'david.miller@gmail.com',
     checkInDate: '2026-06-16',
     checkOutDate: '2026-06-19',
     guestsCount: '1',
-    roomType: 'deluxe',
+    roomType: 'standard',
     specialRequest: 'Strictly vegetarian breakfast options needed.',
     status: 'confirmed',
     submittedAt: new Date(Date.now() - 24 * 3600000).toISOString(),
-    bookingRef: 'SRI-302948'
+    bookingRef: 'MR-302948'
   },
   {
-    id: 'SRI-749102',
+    id: 'MR-749102',
     fullName: 'Priya Dharshini',
     mobileNumber: '+91 91234 56789',
     emailAddress: 'priya.dharsh@gmail.com',
     checkInDate: '2026-06-25',
     checkOutDate: '2026-06-27',
     guestsCount: '4',
-    roomType: 'family',
-    specialRequest: 'Requires extra mattress and crib for child.',
+    roomType: 'venue',
+    specialRequest: 'Requires stage flower decoration and sound system setup.',
     status: 'cancelled',
     submittedAt: new Date(Date.now() - 48 * 3600000).toISOString(),
-    bookingRef: 'SRI-749102'
+    bookingRef: 'MR-749102'
   }
 ];
 
@@ -323,9 +323,9 @@ const AdminPage = () => {
         <div class="receipt">
           <div class="header">
             <div class="header-left">
-              <img src="${logoUrl}" alt="Hotel Sri Mangalam" />
+              <img src="${logoUrl}" alt="Mangalam Residency" />
               <div>
-                <div class="hotel-name">Hotel Sri Mangalam</div>
+                <div class="hotel-name">Mangalam Residency</div>
                 <div class="hotel-addr">M3GQ+PF5, Tuticorin &mdash; Madurai Rd, Kariapatti, Tamil Nadu 626106</div>
                 <div class="hotel-addr" style="margin-top:2px">Ph: +91 98765 43210 &nbsp;|&nbsp; Check-in: 12:00 PM &nbsp;|&nbsp; Check-out: 11:00 AM</div>
               </div>
@@ -385,13 +385,13 @@ const AdminPage = () => {
                   <div class="field-value">${diffDays} Night(s)</div>
                 </div>
                 <div>
-                  <div class="field-label">Rate per Night</div>
-                  <div class="field-value">$${room.price}</div>
+                  <div class="field-label">Rate per Night / Rate per Event</div>
+                  <div class="field-value">₹${room.price}</div>
                 </div>
               </div>
               <div class="total-bar">
                 <div class="total-label">Estimated Total Amount</div>
-                <div class="total-value">$${totalAmt}</div>
+                <div class="total-value">₹${totalAmt}</div>
               </div>
             </div>
 
@@ -418,8 +418,8 @@ const AdminPage = () => {
                 <div class="footer-text" style="margin-top:3px">Printed: ${new Date().toLocaleString()}</div>
               </div>
               <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px">
-                <div class="footer-brand">Sri Mangalam Desk</div>
-                <div class="admin-stamp">Admin Verified</div>
+                <div class="footer-brand">Mangalam Residency Desk</div>
+                <div class="admin-stamp">Verified</div>
               </div>
             </div>
           </div>
@@ -466,7 +466,7 @@ const AdminPage = () => {
                 {/* Logo and Header */}
                 <div className="flex flex-col items-center mb-8">
                   <img src={logo} alt="Logo" className="w-16 h-16 object-contain mb-4 drop-shadow-[0_0_15px_rgba(197,168,128,0.4)]" />
-                  <span className="font-serif text-gold-400 text-lg font-bold tracking-[0.15em] uppercase">Sri Mangalam</span>
+                  <span className="font-serif text-gold-400 text-lg font-bold tracking-[0.15em] uppercase">Mangalam Residency</span>
                   <span className="font-sans text-[9px] tracking-[0.25em] text-gray-500 uppercase mt-1">Management Portal</span>
                   <div className="w-12 h-[1px] bg-gold-400/30 mt-4" />
                 </div>
@@ -532,7 +532,7 @@ const AdminPage = () => {
                       Admin Dashboard
                     </h1>
                     <p className="font-sans text-xs text-gold-400 tracking-widest uppercase font-medium">
-                      Hotel Sri Mangalam Booking Desk
+                      Mangalam Residency Booking Desk
                     </p>
                   </div>
                 </div>
@@ -593,7 +593,7 @@ const AdminPage = () => {
                 <div className="glass-card p-5 bg-luxury-charcoal/30 border border-gold-400/5 rounded-sm flex flex-col justify-between col-span-2 lg:col-span-1">
                   <span className="font-sans text-[9px] tracking-widest uppercase text-gray-500 font-semibold block mb-2">Est. Confirmed Value</span>
                   <div className="flex items-baseline justify-between mt-1">
-                    <span className="font-serif text-xl md:text-2xl font-bold text-gold-300">${estimatedRevenue.toLocaleString()}</span>
+                    <span className="font-serif text-xl md:text-2xl font-bold text-gold-300">₹{estimatedRevenue.toLocaleString()}</span>
                     <span className="text-gold-400/40 text-lg"><FaCrown /></span>
                   </div>
                 </div>
@@ -734,7 +734,7 @@ const AdminPage = () => {
                               {/* Room selection */}
                               <td className="p-4">
                                 <div className="text-white font-medium">{room.label}</div>
-                                <div className="text-[10px] text-gray-500 mt-0.5">${room.price || 0}/Night</div>
+                                <div className="text-[10px] text-gray-500 mt-0.5">₹{room.price || 0}/Night</div>
                               </td>
 
                               {/* Status badge */}
@@ -1019,9 +1019,9 @@ const AdminPage = () => {
               {/* Ticket Header (Branded Logo & Address) */}
               <div className="bg-gold-400/10 border-b border-gold-400/15 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <img src={logo} alt="Hotel Sri Mangalam" className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(197,168,128,0.3)]" />
+                  <img src={logo} alt="Mangalam Residency" className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(197,168,128,0.3)]" />
                   <div className="flex flex-col">
-                    <span className="font-serif text-sm font-bold tracking-[0.1em] uppercase text-gold-400">Hotel Sri Mangalam</span>
+                    <span className="font-serif text-sm font-bold tracking-[0.1em] uppercase text-gold-400">Mangalam Residency</span>
                     <span className="font-sans text-[7.5px] tracking-wide text-gray-500 uppercase mt-0.5 leading-tight">M3GQ+PF5, Tuticorin - Madurai Rd, Kariapatti, TN 626106</span>
                   </div>
                 </div>
@@ -1130,7 +1130,7 @@ const AdminPage = () => {
                 {/* Date Submitted info */}
                 <div className="text-[9.5px] font-sans text-gray-600 flex items-center justify-between">
                   <span>SUBMITTED AT: {new Date(selectedBooking.submittedAt).toLocaleString()}</span>
-                  <span>SRI MANGALAM DESK</span>
+                  <span>MANGALAM RESIDENCY DESK</span>
                 </div>
               </div>
 

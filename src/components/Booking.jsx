@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaCrown } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 import { FiCheckCircle, FiCalendar, FiUser, FiMail, FiPhone, FiChevronDown, FiMessageSquare } from 'react-icons/fi';
 import { addBooking } from '../services/api';
 
 const roomOptions = [
+  { value: 'standard', label: 'Standard Room' },
   { value: 'deluxe', label: 'Deluxe Room' },
-  { value: 'executive', label: 'Executive Room' },
-  { value: 'family', label: 'Family Room' },
-  { value: 'premium-suite', label: 'Premium Suite' }
+  { value: 'suite', label: 'Suite Room' },
+  { value: 'venue', label: 'Mangalam Venue (Meeting Hall)' }
 ];
 
 const Booking = ({ hideTitle = false }) => {
@@ -21,7 +20,7 @@ const Booking = ({ hideTitle = false }) => {
     checkInDate: '',
     checkOutDate: '',
     guestsCount: '1',
-    roomType: 'deluxe',
+    roomType: 'standard',
     specialRequest: ''
   });
 
@@ -81,7 +80,7 @@ const Booking = ({ hideTitle = false }) => {
     if (validateForm()) {
       setIsSubmitting(true);
       // Generate unique booking reference number
-      const randomRef = 'SRI-' + Math.floor(100000 + Math.random() * 900000);
+      const randomRef = 'MR-' + Math.floor(100000 + Math.random() * 900000);
       setBookingRef(randomRef);
 
       const newBooking = {
@@ -119,7 +118,7 @@ const Booking = ({ hideTitle = false }) => {
       checkInDate: '',
       checkOutDate: '',
       guestsCount: '1',
-      roomType: 'deluxe',
+      roomType: 'standard',
       specialRequest: ''
     });
     setErrors({});
@@ -146,7 +145,7 @@ const Booking = ({ hideTitle = false }) => {
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Booking Receipt — Hotel Sri Mangalam</title>
+        <title>Booking Receipt — Mangalam Residency</title>
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap');
           @page { size: A4 portrait; margin: 15mm 15mm; }
@@ -193,11 +192,11 @@ const Booking = ({ hideTitle = false }) => {
           <!-- Header -->
           <div class="header">
             <div class="header-left">
-              <img src="${logoUrl}" alt="Hotel Sri Mangalam Logo" />
+              <img src="${logoUrl}" alt="Mangalam Residency Logo" />
               <div>
-                <div class="hotel-name">Hotel Sri Mangalam</div>
+                <div class="hotel-name">Mangalam Residency</div>
                 <div class="hotel-addr">M3GQ+PF5, Tuticorin - Madurai Rd, Kariapatti, Tamil Nadu 626106</div>
-                <div class="hotel-addr" style="margin-top:2px">Ph: +91 98765 43210 &nbsp;|&nbsp; check-in: 12:00 PM &nbsp;|&nbsp; Check-out: 11:00 AM</div>
+                <div class="hotel-addr" style="margin-top:2px">Ph: +91 98765 43210 &nbsp;|&nbsp; Check-in: 12:00 PM &nbsp;|&nbsp; Check-out: 11:00 AM</div>
               </div>
             </div>
             <div class="badge">Reservation Receipt</div>
@@ -246,7 +245,7 @@ const Booking = ({ hideTitle = false }) => {
                 <div class="field-value">${formData.checkOutDate}</div>
               </div>
               <div>
-                <div class="field-label">Room / Suite</div>
+                <div class="field-label">Room / Suite / Venue</div>
                 <div class="field-value gold">${roomLabel}</div>
               </div>
               <div>
@@ -275,7 +274,7 @@ const Booking = ({ hideTitle = false }) => {
             <!-- Footer -->
             <div class="footer">
               <div class="footer-text">Submitted: ${new Date().toLocaleString()} &nbsp;|&nbsp; Booking is subject to availability confirmation.</div>
-              <div class="footer-brand">Sri Mangalam Desk</div>
+              <div class="footer-brand">Mangalam Residency Desk</div>
             </div>
           </div>
         </div>
@@ -402,7 +401,7 @@ const Booking = ({ hideTitle = false }) => {
                         <option value="2" className="bg-luxury-charcoal text-white">2 Guests</option>
                         <option value="3" className="bg-luxury-charcoal text-white">3 Guests</option>
                         <option value="4" className="bg-luxury-charcoal text-white">4 Guests</option>
-                        <option value="5+" className="bg-luxury-charcoal text-white">5+ Guests</option>
+                        <option value="5+" className="bg-luxury-charcoal text-white">5+ Guests (or Event/Venue booking)</option>
                       </select>
                       <FiChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-gold-400 pointer-events-none" />
                     </div>
@@ -414,7 +413,7 @@ const Booking = ({ hideTitle = false }) => {
                   {/* Check-In Date */}
                   <div className="flex flex-col">
                     <label className="font-sans text-xs uppercase tracking-widest text-gold-400 mb-2 font-medium flex items-center gap-1.5">
-                      <FiCalendar /> Check-In Date <span className="text-red-500">*</span>
+                      <FiCalendar /> Check-In Date / Event Date <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="date"
@@ -430,7 +429,7 @@ const Booking = ({ hideTitle = false }) => {
                   {/* Check-Out Date */}
                   <div className="flex flex-col">
                     <label className="font-sans text-xs uppercase tracking-widest text-gold-400 mb-2 font-medium flex items-center gap-1.5">
-                      <FiCalendar /> Check-Out Date <span className="text-red-500">*</span>
+                      <FiCalendar /> Check-Out Date / End Date <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="date"
@@ -447,7 +446,7 @@ const Booking = ({ hideTitle = false }) => {
                 {/* Room Type Select */}
                 <div className="flex flex-col">
                   <label className="font-sans text-xs uppercase tracking-widest text-gold-400 mb-2 font-medium">
-                    Room or Suite Type
+                    Room Type / Venue Selection
                   </label>
                   <div className="relative">
                     <select
@@ -469,14 +468,14 @@ const Booking = ({ hideTitle = false }) => {
                 {/* Special Requests */}
                 <div className="flex flex-col">
                   <label className="font-sans text-xs uppercase tracking-widest text-gold-400 mb-2 font-medium flex items-center gap-1.5">
-                    <FiMessageSquare /> Special Request (Optional)
+                    <FiMessageSquare /> Special Request / Event Details (Optional)
                   </label>
                   <textarea
                     name="specialRequest"
                     value={formData.specialRequest}
                     onChange={handleChange}
                     rows="3"
-                    placeholder="e.g. Airport shuttle request, high floor, early check-in, extra towels..."
+                    placeholder="e.g. Stage decoration preference, catering choices, airport shuttle request, early check-in..."
                     className="w-full bg-luxury-gray/40 border border-gold-400/10 hover:border-gold-400/35 focus:border-gold-400 text-white placeholder-gray-600 px-4 py-3 rounded-sm font-sans text-sm focus:outline-none resize-none transition-all duration-300"
                   />
                 </div>
@@ -527,9 +526,9 @@ const Booking = ({ hideTitle = false }) => {
                   {/* Ticket Header (Branded Logo & Address) */}
                   <div className="bg-gold-400/10 border-b border-gold-400/15 p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div className="flex items-center gap-3">
-                      <img src={logo} alt="Hotel Sri Mangalam" className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(197,168,128,0.3)]" />
+                      <img src={logo} alt="Mangalam Residency" className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(197,168,128,0.3)]" />
                       <div className="flex flex-col">
-                        <span className="font-serif text-sm font-bold tracking-[0.1em] uppercase text-gold-400">Hotel Sri Mangalam</span>
+                        <span className="font-serif text-sm font-bold tracking-[0.1em] uppercase text-gold-400">Mangalam Residency</span>
                         <span className="font-sans text-[7.5px] tracking-wide text-gray-500 uppercase mt-0.5 leading-tight">M3GQ+PF5, Tuticorin - Madurai Rd, Kariapatti, TN 626106</span>
                       </div>
                     </div>
@@ -550,16 +549,16 @@ const Booking = ({ hideTitle = false }) => {
                     </div>
 
                     <div className="border-t border-luxury-light-gray/50 pt-3">
-                      <span className="text-[10px] uppercase tracking-wider text-gray-500 font-medium font-sans">CHECK-IN</span>
+                      <span className="text-[10px] uppercase tracking-wider text-gray-500 font-medium font-sans">CHECK-IN / EVENT DATE</span>
                       <span className="text-xs text-white block font-sans mt-0.5">{formData.checkInDate}</span>
                     </div>
                     <div className="border-t border-luxury-light-gray/50 pt-3">
-                      <span className="text-[10px] uppercase tracking-wider text-gray-500 font-medium font-sans">CHECK-OUT</span>
+                      <span className="text-[10px] uppercase tracking-wider text-gray-500 font-medium font-sans">CHECK-OUT / END DATE</span>
                       <span className="text-xs text-white block font-sans mt-0.5">{formData.checkOutDate}</span>
                     </div>
 
                     <div className="border-t border-luxury-light-gray/50 pt-3">
-                      <span className="text-[10px] uppercase tracking-wider text-gray-500 font-medium font-sans">ROOM SELECTION</span>
+                      <span className="text-[10px] uppercase tracking-wider text-gray-500 font-medium font-sans">ROOM / VENUE SELECTION</span>
                       <span className="text-xs text-white block font-sans capitalize mt-0.5">
                         {roomOptions.find(o => o.value === formData.roomType)?.label || formData.roomType}
                       </span>

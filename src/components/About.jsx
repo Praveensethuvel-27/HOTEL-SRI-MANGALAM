@@ -53,7 +53,7 @@ const About = ({ hideTitle = false }) => {
               Since 2011
             </span>
             <h2 className="font-serif text-3xl md:text-5xl text-white font-bold tracking-wide uppercase">
-              About Hotel Sri Mangalam
+              About Mangalam Residency
             </h2>
             <div className="w-16 h-[1px] bg-gold-400 mx-auto mt-4" />
           </div>
@@ -74,7 +74,7 @@ const About = ({ hideTitle = false }) => {
                 A Heritage of Luxury & Refined Service
               </h3>
               <p className="font-sans text-gray-300 leading-relaxed font-light mb-4 text-sm md:text-base">
-                Located in the heart of the city, Hotel Sri Mangalam has stood as a beacon of unmatched hospitality and elegant living. We provide our guests with an immersive luxury experience where traditional service meets modern convenience.
+                Located in Kariapatti on the Tuticorin–Madurai Road, Mangalam Residency has stood as a beacon of unmatched hospitality and elegant living. We provide our guests with an immersive experience where traditional service meets modern convenience.
               </p>
               <p className="font-sans text-gray-300 leading-relaxed font-light text-sm md:text-base">
                 From our intricately designed lobby to our bespoke premium suites, every detail has been curated to offer you a stay that feels both grand and intensely personal. We strive to create lasting memories for both corporate professionals and vacationing families.
@@ -141,8 +141,8 @@ const About = ({ hideTitle = false }) => {
             {/* The Image */}
             <div className="relative z-10 overflow-hidden shadow-2xl border border-luxury-gray max-w-[480px] lg:max-w-[440px] xl:max-w-[500px]">
               <img
-                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop"
-                alt="Sri Mangalam Hospitality Team"
+                src="/images/pic15.jpg"
+                alt="Mangalam Residency Corridor"
                 className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
               />
             </div>

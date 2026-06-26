@@ -16,12 +16,12 @@ const Footer = () => {
           <Link to="/" className="flex items-center gap-3 group self-start">
             <img
               src={logo}
-              alt="Hotel Sri Mangalam"
+              alt="Mangalam Residency"
               className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(197,168,128,0.4)] group-hover:scale-110 transition-transform duration-300"
             />
             <div className="flex flex-col leading-tight">
               <span className="font-serif text-base font-bold tracking-[0.1em] uppercase text-gold-400">
-                Hotel Sri Mangalam
+                Mangalam Residency
               </span>
               <span className="font-sans text-[9px] tracking-[0.2em] uppercase text-gray-500">
                 Kariapatti · Tamil Nadu
@@ -29,8 +29,8 @@ const Footer = () => {
             </div>
           </Link>
           <p className="text-gray-500 font-light leading-relaxed text-xs">
-            Indulge in a world of refined elegance. Hotel Sri Mangalam offers world-class suites,
-            award-winning cuisine, and timeless luxury on the Tuticorin–Madurai Road, Kariapatti.
+            Indulge in a world of refined elegance. Mangalam Residency offers comfortable rooms,
+            a grand event venue, and warm hospitality on the Tuticorin–Madurai Road, Kariapatti.
           </p>
           {/* Social Icons */}
           <div className="flex items-center gap-3 mt-1">
@@ -62,14 +62,14 @@ const Footer = () => {
           </h3>
           <ul className="flex flex-col gap-3 font-light text-xs">
             {[
-              { label: 'Home Page',             to: '/' },
-              { label: 'About Us',              to: '/about' },
-              { label: 'Rooms & Suites',        to: '/rooms' },
-              { label: 'Photo Gallery',         to: '/gallery' },
-              { label: 'Facilities & Amenities',to: '/facilities' },
-              { label: 'Reservation Request',   to: '/booking' },
-              { label: 'Contact Us',            to: '/contact' },
-              { label: 'Admin Panel',           to: '/admin' },
+              { label: 'Home Page',              to: '/' },
+              { label: 'About Us',               to: '/about' },
+              { label: 'Rooms & Suites',         to: '/rooms' },
+              { label: 'Photo Gallery',          to: '/gallery' },
+              { label: 'Facilities & Amenities', to: '/facilities' },
+              { label: 'Mangalam Venue',         to: '/venue' },
+              { label: 'Reservation Request',    to: '/booking' },
+              { label: 'Contact Us',             to: '/contact' },
             ].map(({ label, to }) => (
               <li key={to}>
                 <Link to={to} className="hover:text-gold-400 transition-colors">
@@ -96,7 +96,7 @@ const Footer = () => {
             </li>
             <li className="flex flex-col">
               <span className="text-[10px] tracking-wider text-gold-400 font-semibold uppercase mb-1">EMAIL</span>
-              <span>reservations@hotelsrimangalam.com</span>
+              <span>reservations@mangalamresidency.com</span>
             </li>
           </ul>
         </div>
@@ -111,9 +111,9 @@ const Footer = () => {
               'Airport Shuttle Request',
               'Guided City Tours',
               'Private Dining Booking',
-              'Corporate Meeting Salon',
+              'Mangalam Venue Booking',
               'Luggage Storage',
-              'Currency Exchange',
+              'Event Catering',
             ].map((service) => (
               <li key={service} className="hover:text-gold-400 transition-colors cursor-pointer">
                 {service}
@@ -127,7 +127,7 @@ const Footer = () => {
       <div className="border-t border-gray-900 bg-[#070708] py-7">
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left text-gray-600 text-[11px]">
           <p>
-            © {currentYear} Hotel Sri Mangalam, Kariapatti. All Rights Reserved.
+            © {currentYear} Mangalam Residency, Kariapatti. All Rights Reserved.
           </p>
           <div className="flex items-center gap-5">
             <a href="#" className="hover:text-gold-400 transition-colors">Privacy Policy</a>

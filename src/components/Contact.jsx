@@ -21,8 +21,8 @@ const contactInfo = [
     id: 3,
     title: 'Email Address',
     icon: <FaEnvelope />,
-    details: 'reservations@hotelsrimangalam.com\ninfo@hotelsrimangalam.com',
-    link: 'mailto:reservations@hotelsrimangalam.com',
+    details: 'reservations@mangalamresidency.com\ninfo@mangalamresidency.com',
+    link: 'mailto:reservations@mangalamresidency.com',
   },
   {
     id: 4,
@@ -80,7 +80,7 @@ const Contact = ({ hideTitle = false }) => {
                       className="font-sans text-xs md:text-sm text-gray-400 hover:text-gold-400 transition-colors leading-relaxed block whitespace-pre-line"
                       target={info.link.startsWith('http') ? '_blank' : '_self'}
                       rel="noopener noreferrer"
-                    >
+                     >
                       {info.details}
                     </a>
                   ) : (
@@ -109,13 +109,13 @@ const Contact = ({ hideTitle = false }) => {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Hotel Sri Mangalam — Kariapatti, Tamil Nadu"
+              title="Mangalam Residency — Kariapatti, Tamil Nadu"
             />
 
             {/* Address Pin Overlay */}
             <div className="absolute bottom-4 left-4 right-4 glass-effect p-3 border border-gold-400/25 rounded-sm">
               <p className="font-sans text-[10px] text-gold-400 tracking-wider uppercase font-semibold mb-0.5">
-                📍 Hotel Sri Mangalam
+                📍 Mangalam Residency
               </p>
               <p className="font-sans text-[10px] text-gray-300 leading-relaxed">
                 M3GQ+PF5, Tuticorin - Madurai Rd, Kariapatti, Tamil Nadu 626106

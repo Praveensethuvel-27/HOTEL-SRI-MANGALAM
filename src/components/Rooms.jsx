@@ -1,33 +1,33 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { FaWifi, FaTv, FaSnowflake, FaBed, FaCoffee, FaBath } from 'react-icons/fa';
+import { FaWifi, FaTv, FaSnowflake, FaBed, FaCoffee, FaBath, FaUsers } from 'react-icons/fa';
 import { BiExpand } from 'react-icons/bi';
 
 const roomsData = [
   {
-    id: 'deluxe',
-    name: 'Deluxe Room',
-    image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=800&auto=format&fit=crop',
-    description: 'A cozy blend of modern style and supreme comfort, perfect for business travelers or short weekend getaways.',
-    size: '32 m²',
-    bed: 'King Bed',
-    price: 120,
+    id: 'standard',
+    name: 'Standard Room',
+    image: '/images/pic6.jpg',
+    description: 'A comfortable and well-furnished room ideal for solo travelers and couples, featuring twin beds, modern décor, and all essential amenities for a refreshing stay.',
+    size: '24 m²',
+    bed: 'Twin Beds',
+    price: 1800,
     amenities: [
       { icon: <FaWifi />, name: 'Free Wi-Fi' },
       { icon: <FaSnowflake />, name: 'Air Conditioning' },
       { icon: <FaTv />, name: 'Smart TV' },
-      { icon: <FaBed />, name: 'King Bed' },
+      { icon: <FaBed />, name: 'Twin Beds' },
     ],
   },
   {
-    id: 'executive',
-    name: 'Executive Room',
-    image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?q=80&w=800&auto=format&fit=crop',
-    description: 'Elevated luxury with separate working desks, luxury bedding, and beautiful views of the pool deck area.',
-    size: '45 m²',
-    bed: 'King Bed & Sofa',
-    price: 180,
+    id: 'deluxe',
+    name: 'Deluxe Room',
+    image: '/images/pic7.jpg',
+    description: 'An elevated experience with a spacious king-size bed, premium furnishings, and stylish interiors — perfect for business travelers or couples seeking extra comfort.',
+    size: '32 m²',
+    bed: 'King Bed',
+    price: 2500,
     amenities: [
       { icon: <FaWifi />, name: 'Free Wi-Fi' },
       { icon: <FaSnowflake />, name: 'Air Conditioning' },
@@ -36,33 +36,18 @@ const roomsData = [
     ],
   },
   {
-    id: 'family',
-    name: 'Family Room',
-    image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=800&auto=format&fit=crop',
-    description: 'Spacious accommodations designed with comfort in mind for the whole family, featuring multiple double beds and lounge seating.',
-    size: '60 m²',
-    bed: '2 Queen Beds',
-    price: 240,
-    amenities: [
-      { icon: <FaWifi />, name: 'Free Wi-Fi' },
-      { icon: <FaSnowflake />, name: 'Air Conditioning' },
-      { icon: <FaTv />, name: 'Smart TV' },
-      { icon: <FaBed />, name: 'Double Beds' },
-    ],
-  },
-  {
-    id: 'premium-suite',
-    name: 'Premium Suite',
-    image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?q=80&w=800&auto=format&fit=crop',
-    description: 'Our crown jewel. Indulge in expansive penthouse layouts, a separate dining salon, private bar, and master bath Jacuzzi.',
-    size: '85 m²',
-    bed: 'Presidential King',
-    price: 350,
+    id: 'suite',
+    name: 'Suite Room',
+    image: '/images/pic14.jpg',
+    description: 'Our crown jewel — indulge in a luxuriously decorated suite with floral bedding arrangements, premium king-size bed, and a warm ambiance crafted for honeymooners and VIP guests.',
+    size: '50 m²',
+    bed: 'King Bed (Premium)',
+    price: 3800,
     amenities: [
       { icon: <FaWifi />, name: 'High-speed Wi-Fi' },
       { icon: <FaSnowflake />, name: 'Climate Control' },
-      { icon: <FaTv />, name: '65" OLED TV' },
-      { icon: <FaBath />, name: 'Private Jacuzzi' },
+      { icon: <FaTv />, name: 'LED TV' },
+      { icon: <FaBath />, name: 'Premium Bath' },
     ],
   },
 ];
@@ -86,13 +71,13 @@ const Rooms = ({ hideTitle = false }) => {
             </h2>
             <div className="w-16 h-[1px] bg-gold-400 mx-auto mt-4" />
             <p className="font-sans text-gray-400 text-sm md:text-base font-light max-w-xl mx-auto mt-4">
-              Immerse yourself in world-class architecture and details designed specifically to provide comfort and luxury.
+              Three distinct accommodation categories designed to offer comfort, style, and memorable stays at Mangalam Residency.
             </p>
           </div>
         )}
 
         {/* Rooms Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
           {roomsData.map((room, index) => (
             <motion.div
               key={room.id}
@@ -121,7 +106,7 @@ const Rooms = ({ hideTitle = false }) => {
                 {/* Price Tag Overlay */}
                 <div className="absolute bottom-4 right-4 text-right">
                   <span className="font-sans text-[10px] tracking-widest uppercase text-gray-300 block mb-1">From</span>
-                  <span className="font-serif text-2xl font-bold text-gold-400">${room.price}</span>
+                  <span className="font-serif text-2xl font-bold text-gold-400">₹{room.price.toLocaleString()}</span>
                   <span className="font-sans text-[10px] text-gray-400">/Night</span>
                 </div>
               </div>
@@ -139,7 +124,7 @@ const Rooms = ({ hideTitle = false }) => {
                 {/* Amenities Block */}
                 <div className="border-t border-luxury-light-gray pt-5 mb-6">
                   <span className="font-sans text-[10px] tracking-[0.2em] uppercase text-gold-400 font-semibold block mb-3">
-                    Premium Amenities
+                    Room Amenities
                   </span>
                   <div className="grid grid-cols-2 gap-3">
                     {room.amenities.map((item, idx) => (

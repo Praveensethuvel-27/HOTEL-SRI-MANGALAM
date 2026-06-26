@@ -9,6 +9,7 @@ const navLinks = [
   { name: 'Home',       href: '/' },
   { name: 'About',      href: '/about' },
   { name: 'Rooms',      href: '/rooms' },
+  { name: 'Venue',      href: '/venue' },
   { name: 'Gallery',    href: '/gallery' },
   { name: 'Facilities', href: '/facilities' },
   { name: 'Booking',    href: '/booking' },
@@ -46,14 +47,14 @@ const Navbar = () => {
           <Link to="/" className="flex items-center gap-3 group">
             <motion.img
               src={logo}
-              alt="Hotel Sri Mangalam"
+              alt="Mangalam Residency"
               whileHover={{ scale: 1.1, rotate: 5 }}
               transition={{ type: 'spring', stiffness: 300 }}
               className="w-10 h-10 md:w-12 md:h-12 object-contain drop-shadow-[0_0_8px_rgba(197,168,128,0.5)]"
             />
             <div className="flex flex-col leading-tight">
               <span className="font-serif text-base md:text-lg font-bold tracking-[0.12em] uppercase text-gold-400">
-                Hotel Sri Mangalam
+                Mangalam Residency
               </span>
               <span className="font-sans text-[9px] tracking-[0.25em] uppercase text-gray-400">
                 Kariapatti · Tamil Nadu
@@ -62,7 +63,7 @@ const Navbar = () => {
           </Link>
 
           {/* ── Desktop Nav Links ── */}
-          <nav className="hidden lg:flex items-center gap-7">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -120,7 +121,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-2">
                   <img src={logo} alt="Logo" className="w-10 h-10 object-contain" />
                   <span className="font-serif text-sm font-bold tracking-widest uppercase text-gold-400">
-                    Sri Mangalam
+                    Mangalam Residency
                   </span>
                 </div>
                 <button

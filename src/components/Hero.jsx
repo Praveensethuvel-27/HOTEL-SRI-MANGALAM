@@ -15,8 +15,8 @@ const Hero = () => {
           initial={{ scale: 1.18 }}
           animate={{ scale: 1.0 }}
           transition={{ duration: 12, ease: 'easeOut' }}
-          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1920&auto=format&fit=crop"
-          alt="Hotel Sri Mangalam Exterior"
+          src="/images/pic1.jpg"
+          alt="Mangalam Residency Exterior"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/88 via-black/60 to-black/30" />
@@ -35,7 +35,7 @@ const Hero = () => {
         >
           <motion.img
             src={logo}
-            alt="Hotel Sri Mangalam"
+            alt="Mangalam Residency"
             animate={{ scale: [1, 1.06, 1] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             className="w-20 h-20 md:w-24 md:h-24 object-contain drop-shadow-[0_0_20px_rgba(197,168,128,0.6)] mx-auto"
@@ -55,7 +55,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="font-sans text-[11px] md:text-sm tracking-[0.4em] uppercase text-gold-400 font-semibold mb-4"
         >
-          Welcome to Hotel Sri Mangalam
+          Welcome to Mangalam Residency
         </motion.p>
 
         <motion.h1
@@ -76,7 +76,7 @@ const Hero = () => {
           className="font-sans text-sm sm:text-base md:text-lg text-gray-300 font-light max-w-2xl leading-relaxed mb-10 tracking-wide"
         >
           Located in Kariapatti, Tamil Nadu — a tranquil escape offering premium suites,
-          gourmet dining, and bespoke concierge services tailored to perfection.
+          grand event venue, and bespoke concierge services tailored to perfection.
         </motion.p>
 
         <motion.div

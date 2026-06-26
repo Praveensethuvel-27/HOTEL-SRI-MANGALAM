@@ -13,6 +13,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 import Home from './pages/Home';
 import AboutPage from './pages/AboutPage';
 import RoomsPage from './pages/RoomsPage';
+import VenuePage from './pages/VenuePage';
 import GalleryPage from './pages/GalleryPage';
 import FacilitiesPage from './pages/FacilitiesPage';
 import BookingPage from './pages/BookingPage';
@@ -60,6 +61,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/rooms" element={<RoomsPage />} />
+              <Route path="/venue" element={<VenuePage />} />
               <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/facilities" element={<FacilitiesPage />} />
               <Route path="/booking" element={<BookingPage />} />

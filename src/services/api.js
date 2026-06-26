@@ -1,62 +1,61 @@
 import { GOOGLE_SCRIPT_API_URL, ENABLE_LOCAL_FALLBACK } from '../config/dbConfig';
 
-// Initial Mock Bookings to pre-populate local fallback database if empty
 const initialMockBookings = [
   {
-    id: 'SRI-582910',
+    id: 'MR-582910',
     fullName: 'Rajesh Kumar',
     mobileNumber: '+91 98765 43210',
     emailAddress: 'rajesh.kumar@example.com',
     checkInDate: '2026-06-18',
     checkOutDate: '2026-06-21',
     guestsCount: '2',
-    roomType: 'premium-suite',
+    roomType: 'suite',
     specialRequest: 'Need airport shuttle pick up at Madurai airport.',
     status: 'pending',
     submittedAt: new Date(Date.now() - 2 * 3600000).toISOString(),
-    bookingRef: 'SRI-582910'
+    bookingRef: 'MR-582910'
   },
   {
-    id: 'SRI-849201',
+    id: 'MR-849201',
     fullName: 'Meenakshi Sundaram',
     mobileNumber: '+91 94432 12345',
     emailAddress: 'meena.s@example.com',
     checkInDate: '2026-06-20',
     checkOutDate: '2026-06-22',
     guestsCount: '3',
-    roomType: 'executive',
+    roomType: 'deluxe',
     specialRequest: 'High floor room preferred, facing the garden view.',
     status: 'confirmed',
     submittedAt: new Date(Date.now() - 10 * 3600000).toISOString(),
-    bookingRef: 'SRI-849201'
+    bookingRef: 'MR-849201'
   },
   {
-    id: 'SRI-302948',
+    id: 'MR-302948',
     fullName: 'David Miller',
     mobileNumber: '+91 99944 88812',
     emailAddress: 'david.miller@gmail.com',
     checkInDate: '2026-06-16',
     checkOutDate: '2026-06-19',
     guestsCount: '1',
-    roomType: 'deluxe',
+    roomType: 'standard',
     specialRequest: 'Strictly vegetarian breakfast options needed.',
     status: 'confirmed',
     submittedAt: new Date(Date.now() - 24 * 3600000).toISOString(),
-    bookingRef: 'SRI-302948'
+    bookingRef: 'MR-302948'
   },
   {
-    id: 'SRI-749102',
+    id: 'MR-749102',
     fullName: 'Priya Dharshini',
     mobileNumber: '+91 91234 56789',
     emailAddress: 'priya.dharsh@gmail.com',
     checkInDate: '2026-06-25',
     checkOutDate: '2026-06-27',
     guestsCount: '4',
-    roomType: 'family',
-    specialRequest: 'Requires extra mattress and crib for child.',
+    roomType: 'venue',
+    specialRequest: 'Requires stage flower decoration and sound system setup.',
     status: 'cancelled',
     submittedAt: new Date(Date.now() - 48 * 3600000).toISOString(),
-    bookingRef: 'SRI-749102'
+    bookingRef: 'MR-749102'
   }
 ];
 
@@ -130,7 +129,7 @@ export async function fetchBookings() {
 }
 
 export async function addBooking(bookingData) {
-  const newRef = 'SRI-' + Math.floor(100000 + Math.random() * 900000);
+  const newRef = 'MR-' + Math.floor(100000 + Math.random() * 900000);
   const formattedBooking = {
     ...bookingData,
     id: bookingData.id || newRef,

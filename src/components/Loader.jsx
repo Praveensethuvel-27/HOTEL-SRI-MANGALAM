@@ -15,7 +15,7 @@ const Loader = () => {
       <div className="absolute inset-0 z-0">
         <img
           src={lobbyBg}
-          alt="Hotel Sri Mangalam Lobby Wall"
+          alt="Mangalam Residency Lobby Wall"
           className="w-full h-full object-cover opacity-25 filter blur-[2px] scale-105"
         />
         {/* Dark luxury vignette overlay */}
@@ -72,7 +72,7 @@ const Loader = () => {
           {/* The logo image itself */}
           <img
             src={logo}
-            alt="Hotel Sri Mangalam Logo"
+            alt="Mangalam Residency Logo"
             className="w-36 h-36 md:w-44 md:h-44 object-contain drop-shadow-[0_0_30px_rgba(197,168,128,0.4)] relative z-10"
           />
         </motion.div>
@@ -96,7 +96,7 @@ const Loader = () => {
           transition={{ delay: 0.8, duration: 0.8, ease: 'easeOut' }}
           className="font-serif text-2xl md:text-3xl tracking-[0.2em] uppercase text-gold-400 font-bold mb-1"
         >
-          Hotel Sri Mangalam
+          Mangalam Residency
         </motion.h1>
 
         {/* Location Tagline */}
