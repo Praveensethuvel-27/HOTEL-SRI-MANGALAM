@@ -92,11 +92,11 @@ const Footer = () => {
             </li>
             <li className="flex flex-col">
               <span className="text-[10px] tracking-wider text-gold-400 font-semibold uppercase mb-1">PHONE</span>
-              <span>+91 422 234 5678 / +91 98765 43210</span>
+              <span>+91 9944766622 / +91  8883688666</span>
             </li>
             <li className="flex flex-col">
               <span className="text-[10px] tracking-wider text-gold-400 font-semibold uppercase mb-1">EMAIL</span>
-              <span>reservations@mangalamresidency.com</span>
+              <span>residency738@gmail.com</span>
             </li>
           </ul>
         </div>
