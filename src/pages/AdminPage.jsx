@@ -326,8 +326,8 @@ const AdminPage = () => {
               <img src="${logoUrl}" alt="Mangalam Residency" />
               <div>
                 <div class="hotel-name">Mangalam Residency</div>
-                <div class="hotel-addr">M3GQ+PF5, Tuticorin &mdash; Madurai Rd, Kariapatti, Tamil Nadu 626106</div>
-                <div class="hotel-addr" style="margin-top:2px">Ph: +91 98765 43210 &nbsp;|&nbsp; Check-in: 12:00 PM &nbsp;|&nbsp; Check-out: 11:00 AM</div>
+                <div class="hotel-addr">212/18 Tuticorin - Madurai Rd, Kariapatti, K Karisal Lulam, Tamil Nadu 626106</div>
+                <div class="hotel-addr" style="margin-top:2px">Ph: +91 99447 66622 &nbsp;|&nbsp; Check-in: 12:00 PM &nbsp;|&nbsp; Check-out: 11:00 AM</div>
               </div>
             </div>
             <div class="badge">Official Receipt</div>
@@ -884,11 +884,9 @@ const AdminPage = () => {
                                 {/* Guest */}
                                 <td className="p-4 pl-6">
                                   <div className="flex items-center gap-3">
-                                    <img
-                                      src={review.image || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=80&auto=format&fit=crop'}
-                                      alt={review.name}
-                                      className="w-8 h-8 rounded-full object-cover border border-gold-400/20 flex-shrink-0"
-                                    />
+                                    <div className="w-8 h-8 rounded-full border border-gold-400/25 bg-gold-400/10 flex items-center justify-center text-gold-400 text-xs font-serif font-bold uppercase shrink-0">
+                                      {review.name ? review.name.charAt(0) : 'G'}
+                                    </div>
                                     <div>
                                       <div className="font-semibold text-white text-xs">{review.name}</div>
                                       <div className="text-[10px] text-gray-500">{review.role}</div>
@@ -1022,7 +1020,7 @@ const AdminPage = () => {
                   <img src={logo} alt="Mangalam Residency" className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(197,168,128,0.3)]" />
                   <div className="flex flex-col">
                     <span className="font-serif text-sm font-bold tracking-[0.1em] uppercase text-gold-400">Mangalam Residency</span>
-                    <span className="font-sans text-[7.5px] tracking-wide text-gray-500 uppercase mt-0.5 leading-tight">M3GQ+PF5, Tuticorin - Madurai Rd, Kariapatti, TN 626106</span>
+                    <span className="font-sans text-[7.5px] tracking-wide text-gray-500 uppercase mt-0.5 leading-tight">212/18 Tuticorin - Madurai Rd, Kariapatti, K Karisal Lulam, TN 626106</span>
                   </div>
                 </div>
                 <button

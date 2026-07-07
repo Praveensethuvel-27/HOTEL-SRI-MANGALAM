@@ -50,7 +50,7 @@ const About = ({ hideTitle = false }) => {
         {!hideTitle && (
           <div className="text-center mb-16">
             <span className="font-sans text-xs md:text-sm tracking-[0.3em] uppercase text-gold-400 font-semibold block mb-3">
-              Since 2011
+              Since 2016
             </span>
             <h2 className="font-serif text-3xl md:text-5xl text-white font-bold tracking-wide uppercase">
               About Mangalam Residency
@@ -188,7 +188,7 @@ const About = ({ hideTitle = false }) => {
             <div className="text-gold-400 text-3xl mb-3">
               <FiClock />
             </div>
-            <Counter target="15" suffix="+" />
+            <Counter target="10" suffix="+" />
             <span className="font-sans text-[10px] md:text-xs tracking-widest uppercase text-gray-400 mt-2 font-medium">
               Years of Service
             </span>

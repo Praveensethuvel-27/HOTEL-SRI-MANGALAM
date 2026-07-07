@@ -195,8 +195,8 @@ const Booking = ({ hideTitle = false }) => {
               <img src="${logoUrl}" alt="Mangalam Residency Logo" />
               <div>
                 <div class="hotel-name">Mangalam Residency</div>
-                <div class="hotel-addr">M3GQ+PF5, Tuticorin - Madurai Rd, Kariapatti, Tamil Nadu 626106</div>
-                <div class="hotel-addr" style="margin-top:2px">Ph: +91 98765 43210 &nbsp;|&nbsp; Check-in: 12:00 PM &nbsp;|&nbsp; Check-out: 11:00 AM</div>
+                <div class="hotel-addr">212/18 Tuticorin - Madurai Rd, Kariapatti, K Karisal Lulam, Tamil Nadu 626106</div>
+                <div class="hotel-addr" style="margin-top:2px">Ph: +91 99447 66622 &nbsp;|&nbsp; Check-in: 12:00 PM &nbsp;|&nbsp; Check-out: 11:00 AM</div>
               </div>
             </div>
             <div class="badge">Reservation Receipt</div>
@@ -529,7 +529,7 @@ const Booking = ({ hideTitle = false }) => {
                       <img src={logo} alt="Mangalam Residency" className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(197,168,128,0.3)]" />
                       <div className="flex flex-col">
                         <span className="font-serif text-sm font-bold tracking-[0.1em] uppercase text-gold-400">Mangalam Residency</span>
-                        <span className="font-sans text-[7.5px] tracking-wide text-gray-500 uppercase mt-0.5 leading-tight">M3GQ+PF5, Tuticorin - Madurai Rd, Kariapatti, TN 626106</span>
+                        <span className="font-sans text-[7.5px] tracking-wide text-gray-500 uppercase mt-0.5 leading-tight">212/18 Tuticorin - Madurai Rd, Kariapatti, K Karisal Lulam, TN 626106</span>
                       </div>
                     </div>
                     <span className="font-sans text-[8px] tracking-widest text-gold-300 font-semibold px-2 py-0.5 bg-gold-400/20 border border-gold-400/30 rounded-sm self-start sm:self-center">
@@ -583,7 +583,7 @@ const Booking = ({ hideTitle = false }) => {
 
                   {/* Ticket Footer */}
                   <div className="border-t border-dashed border-gold-400/20 p-5 bg-gold-400/[0.02] flex items-center justify-between text-[10px] font-sans text-gray-500 tracking-wider">
-                    <span>* Reservation manager contact: +91 98765 43210</span>
+                    <span>* Reservation manager contact: +91 99447 66622</span>
                   </div>
                 </div>
 

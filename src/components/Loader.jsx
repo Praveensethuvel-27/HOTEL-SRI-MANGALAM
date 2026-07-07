@@ -85,7 +85,7 @@ const Loader = () => {
           className="flex items-center gap-2 mb-2"
         >
           <div className="w-6 h-[1px] bg-gold-400/50" />
-          <span className="font-sans text-[8px] tracking-[0.3em] uppercase text-gold-300">ESTD 2011</span>
+          <span className="font-sans text-[8px] tracking-[0.3em] uppercase text-gold-300">ESTD 2016</span>
           <div className="w-6 h-[1px] bg-gold-400/50" />
         </motion.div>
 

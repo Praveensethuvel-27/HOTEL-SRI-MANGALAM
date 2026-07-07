@@ -132,18 +132,32 @@ const Testimonials = () => {
   // Framer Motion Animation Variants for Slider
   const slideVariants = {
     enter: (dir) => ({
-      x: dir > 0 ? 100 : -100,
+      scale: 0.94,
+      y: dir > 0 ? 30 : -30,
+      rotateX: dir > 0 ? 10 : -10,
+      filter: 'blur(8px)',
       opacity: 0
     }),
     center: {
-      x: 0,
+      scale: 1,
+      y: 0,
+      rotateX: 0,
+      filter: 'blur(0px)',
       opacity: 1,
-      transition: { duration: 0.5, ease: 'easeInOut' }
+      transition: { 
+        duration: 0.65, 
+        type: 'spring', 
+        stiffness: 120, 
+        damping: 16 
+      }
     },
     exit: (dir) => ({
-      x: dir < 0 ? 100 : -100,
+      scale: 1.06,
+      y: dir < 0 ? 30 : -30,
+      rotateX: dir < 0 ? -10 : 10,
+      filter: 'blur(8px)',
       opacity: 0,
-      transition: { duration: 0.5, ease: 'easeInOut' }
+      transition: { duration: 0.4, ease: 'easeInOut' }
     })
   };
 
@@ -201,11 +215,9 @@ const Testimonials = () => {
 
                 {/* User Avatar & Details */}
                 <div className="flex items-center gap-4 text-left">
-                  <img
-                    src={currentTestimonial.image || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=150&auto=format&fit=crop'}
-                    alt={currentTestimonial.name}
-                    className="w-12 h-12 rounded-full object-cover border border-gold-400/20"
-                  />
+                  <div className="w-12 h-12 rounded-full border border-gold-400/25 bg-gold-400/10 flex items-center justify-center text-gold-400 text-sm font-serif font-bold uppercase shrink-0">
+                    {currentTestimonial.name ? currentTestimonial.name.charAt(0) : 'G'}
+                  </div>
                   <div>
                     <h4 className="font-serif text-sm font-bold tracking-wide text-white uppercase">
                       {currentTestimonial.name}

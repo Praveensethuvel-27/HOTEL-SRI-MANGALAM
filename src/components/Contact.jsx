@@ -7,22 +7,22 @@ const contactInfo = [
     id: 1,
     title: 'Hotel Address',
     icon: <FaMapMarkerAlt />,
-    details: 'M3GQ+PF5, Tuticorin - Madurai Rd,\nKariapatti, Tamil Nadu 626106',
-    link: 'https://maps.google.com/?q=M3GQ%2BPF5+Kariapatti+Tamil+Nadu',
+    details: '212/18 Tuticorin - Madurai Rd,\nKariapatti, K Karisal Lulam, Tamil Nadu 626106',
+    link: 'https://maps.google.com/?q=212/18+Tuticorin+-+Madurai+Rd,+Kariapatti,+K+Karisal+Lulam,+Tamil+Nadu+626106',
   },
   {
     id: 2,
     title: 'Phone Number',
     icon: <FaPhoneAlt />,
-    details: '+91 422 234 5678\n+91 98765 43210',
-    link: 'tel:+919876543210',
+    details: '+91 99447 66622\n+91 88836 88666',
+    link: 'tel:+919944766622',
   },
   {
     id: 3,
     title: 'Email Address',
     icon: <FaEnvelope />,
-    details: 'reservations@mangalamresidency.com\ninfo@mangalamresidency.com',
-    link: 'mailto:reservations@mangalamresidency.com',
+    details: 'mangalamresidency2023@gmail.com',
+    link: 'mailto:mangalamresidency2023@gmail.com',
   },
   {
     id: 4,
@@ -93,7 +93,7 @@ const Contact = ({ hideTitle = false }) => {
             ))}
           </div>
 
-          {/* Google Map — Kariapatti */}
+          {/* Google Map — Kariapatti (Real Screenshot) */}
           <motion.div
             initial={{ opacity: 0, x: 25 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -101,24 +101,39 @@ const Contact = ({ hideTitle = false }) => {
             transition={{ duration: 0.7 }}
             className="lg:col-span-7 h-96 lg:h-auto min-h-[380px] relative border border-gold-400/15 overflow-hidden shadow-2xl rounded-sm bg-luxury-gray"
           >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3938.02!2d77.793!3d9.456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMjcnMjMuNiJOIDc3wrA0Nyc0Ny4yIkU!5e0!3m2!1sen!2sin!4v1703212456789!5m2!1sen!2sin&q=Kariapatti,Tamil+Nadu+626106"
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: 'invert(88%) hue-rotate(180deg) grayscale(25%)' }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Mangalam Residency — Kariapatti, Tamil Nadu"
-            />
+            <a
+              href="https://maps.google.com/?q=MANGALAM+RESIDENCY,+212/18+Tuticorin+-+Madurai+Rd,+Kariapatti,+K+Karisal+Lulam,+Tamil+Nadu+626106"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group absolute inset-0 block cursor-pointer"
+            >
+              {/* Real Map Screenshot */}
+              <img
+                src="/images/map_screenshot.png"
+                alt="Mangalam Residency on Map — Kariapatti, Tamil Nadu"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 brightness-90 saturate-75"
+              />
+
+              {/* Gold tint gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/50 transition-all duration-500" />
+              <div className="absolute inset-0 bg-gold-400/5 mix-blend-overlay group-hover:bg-gold-400/12 transition-all duration-500" />
+
+              {/* Click to View on Google Maps label top right */}
+              <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-black/55 border border-gold-400/30 backdrop-blur-sm px-2.5 py-1.5 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="font-sans text-[8px] tracking-widest uppercase text-gold-400 font-semibold">Open in Google Maps ↗</span>
+              </div>
+
+              {/* Shimmer sweep */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out pointer-events-none" />
+            </a>
 
             {/* Address Pin Overlay */}
-            <div className="absolute bottom-4 left-4 right-4 glass-effect p-3 border border-gold-400/25 rounded-sm">
+            <div className="absolute bottom-4 left-4 right-4 glass-effect p-3 border border-gold-400/25 rounded-sm pointer-events-none z-10">
               <p className="font-sans text-[10px] text-gold-400 tracking-wider uppercase font-semibold mb-0.5">
                 📍 Mangalam Residency
               </p>
               <p className="font-sans text-[10px] text-gray-300 leading-relaxed">
-                M3GQ+PF5, Tuticorin - Madurai Rd, Kariapatti, Tamil Nadu 626106
+                212/18 Tuticorin - Madurai Rd, Kariapatti, K Karisal Lulam, Tamil Nadu 626106
               </p>
             </div>
           </motion.div>

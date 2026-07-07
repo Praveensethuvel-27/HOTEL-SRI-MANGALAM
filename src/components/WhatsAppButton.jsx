@@ -12,7 +12,7 @@ const WhatsAppButton = () => {
 
   return (
     <a
-      href="https://wa.me/919876543210?text=Hi!%20I%20would%20like%20to%20enquire%20about%20booking%20a%20room%20at%20Hotel%20Sri%20Mangalam%2C%20Kariapatti."
+      href="https://wa.me/919944766622?text=Hi!%20I%20would%20like%20to%20enquire%20about%20booking%20a%20room%20at%20Mangalam%20Residency%2C%20Kariapatti."
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 p-4 bg-[#25D366] text-white rounded-full shadow-2xl hover:bg-[#128C7E] transition-all duration-300 hover:scale-110 flex items-center justify-center group cursor-pointer"
